@@ -1,19 +1,54 @@
+
+@mixin onDesktop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin grid12 {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+
+  @include onDesktop {
+    gap: 24px;
+  }
+}
+
+@mixin gridItem($from, $to) {
+  grid-column: #{$from} / #{$to + 1};
+}
+
 .page {
-  margin: 0;
   font-family: Roboto, sans-serif;
   font-size: 16px;
   line-height: 27px;
+  color: #3e3e3e;
+  scroll-behavior: smooth;
+
+  &__body {
+    margin: 0;
+  }
 
   &__header {
-    margin-bottom: 104px;
+    margin-bottom: 64px;
+
+    @include onDesktop {
+      margin-bottom: 104px;
+    }
   }
 
   &__section {
-    margin-bottom: 104px;
+    margin-bottom: 64px;
+
+    @include onDesktop {
+      margin-bottom: 104px;
+    }
   }
 
   &__menu {
     position: fixed;
+    z-index: 1;
     left: 0;
     right: 0;
     top: 0;
@@ -31,23 +66,11 @@
 .container {
   margin: 0 auto;
   max-width: 1020px;
-  padding: 0 40px;
-}
+  padding: 0 20px;
 
-@mixin onDesktop {
-  @media (min-width: 1024px) {
-    @content;
+  @include onDesktop {
+    padding: 0 40px;
   }
-}
-
-@mixin grid12 {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 24px;
-}
-
-@mixin gridItem($from, $to) {
-  grid-column: #{$from} / #{$to + 1};
 }
 
 .grid {
@@ -66,9 +89,13 @@
 
 @mixin topWithLogo {
   display: grid;
-  grid-template-columns: 24px 1fr 24px;
+  grid-template-columns: 18px 1fr 18px;
   justify-items: center;
   align-items: center;
+
+  @include onDesktop {
+    grid-template-columns: 24px 1fr 24px;
+  }
 }
 
 .header {
@@ -90,41 +117,52 @@
   &__call {
     position: relative;
     display: block;
-    width: 24px;
-    height: 24px;
+    width: 100%;
+    padding-bottom: 100%;
     background-image: url(../images/phone.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
 
-    &::before {
-      content: "+1 234 555-55-55";
-      position: absolute;
-      top: 50%;
+    @include onDesktop() {
+      &::before {
+        content: "+1 234 555-55-55";
+        position: absolute;
+        top: 50%;
 
-      width: max-content;
-      padding-right: 20px;
+        width: max-content;
+        padding-right: 20px;
 
-      color: white;
-      letter-spacing: 2px;
+        color: #fff;
+        letter-spacing: 2px;
 
-      opacity: 0;
-      pointer-events: none;
+        opacity: 0;
+        pointer-events: none;
 
-      transform: translate(-100%, -50%);
-      transition: opacity 0.2s;
-    }
+        transform: translate(-100%, -50%);
+        transition: opacity 0.2s;
+      }
 
-    &:hover::before {
-      opacity: 1;
-      pointer-events: all;
+      &:hover::before {
+        opacity: 1;
+        pointer-events: all;
+      }
     }
   }
 
   &__title {
     margin: 0;
     font-weight: bold;
-    font-size: 80px;
-    line-height: 80px;
-    letter-spacing: -1.5px;
+    font-size: 46px;
+    line-height: 40px;
+    letter-spacing: -1px;
     color: #fff;
+
+    @include onDesktop {
+      font-size: 80px;
+      line-height: 80px;
+      letter-spacing: -1.5px;
+    }
 
     &::before {
       content: "";
@@ -138,14 +176,29 @@
   }
 }
 
+.logo {
+  display: block;
+
+  &__image {
+    height: 48px;
+
+    @include onDesktop {
+      height: 80px;
+    }
+  }
+}
+
 .menu-toggler {
   display: block;
-  width: 24px;
-  height: 16px;
+  width: 100%;
+  padding-bottom: 66.67%;
   border: 0;
   background-color: transparent;
-  background-repeat: no-repeat;
+  background-image: url(../images/phone.svg);
   background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+
   cursor: pointer;
 
   &--opener {
@@ -188,6 +241,7 @@
   }
 
   &__link {
+    position: relative;
     font-size: 22px;
     line-height: 22px;
     letter-spacing: 2px;
@@ -195,6 +249,24 @@
     color: #fff;
     text-decoration: none;
     text-transform: uppercase;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 100%;
+
+      height: 1px;
+      margin-top: 8px;
+      background-color: #fff;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
   }
 
   &__phone {
@@ -215,8 +287,13 @@
     width: fit-content;
     padding-bottom: 8px;
     border-bottom: 1px solid #fff;
+
+    font-size: 12px;
+    line-height: 16px;
     color: #fff;
+    letter-spacing: 2px;
     text-decoration: none;
+    text-transform: uppercase;
   }
 }
 
@@ -229,14 +306,16 @@
 
   &__title {
     margin: 0 0 48px;
-    font-weight: bold;
-    font-size: 48px;
-    line-height: 48px;
+    font-size: 36px;
+    line-height: 1em;
     letter-spacing: -1.5px;
+    font-weight: bold;
+    color: #000;
 
     @include onDesktop {
-      margin: 0;
       @include gridItem(1, 4);
+      margin: 0;
+      font-size: 48px;
     }
   }
 
@@ -274,13 +353,19 @@
 
 .section-title {
   position: relative;
+  margin: 0 0 48px;
 
-  margin: 0 0 80px;
+  font-size: 36px;
+  line-height: 1em;
+  color: #000;
   font-weight: bold;
-  font-size: 48px;
-  line-height: 48px;
   text-align: center;
   letter-spacing: -1.5px;
+
+  @include onDesktop {
+    font-size: 48px;
+    margin-bottom: 80px;
+  }
 
   &::after {
     content: "";
@@ -294,6 +379,64 @@
     background-image: url(../images/crown.svg);
     background-repeat: no-repeat;
     background-position: center;
+  }
+}
+
+.button {
+  box-sizing: border-box;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 56px;
+  border: 2px solid #0075ff;
+  border-radius: 8px;
+
+  font-size: 16px;
+  line-height: 14px;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+
+  background-color: #0075ff;
+  box-shadow: 0 6px 23px rgba(0, 117, 255, 0.46);
+
+  transition: all 0.2s;
+
+  &--secondary {
+    color: #0075ff;
+    background-color: #fff;
+    box-shadow: none;
+  }
+
+  &:hover {
+    color: #fff;
+    border-color: #005ecc;
+    background-color: #005ecc;
+    box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
+  }
+
+  &:active {
+    color: #fff;
+    background-color: #005ecc;
+    border-color: #005ecc;
+    box-shadow: 0 8px 14px rgba(0, 83, 181, 0.48);
+  }
+}
+
+.gallery {
+  &__button-container {
+    @include onDesktop {
+      @include grid12;
+    }
+  }
+
+  &__button {
+    @include onDesktop {
+      @include gridItem(6, 7);
+    }
   }
 }
 
@@ -407,7 +550,11 @@
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    margin-bottom: 32px;
+    margin-bottom: 28px;
+
+    @include onDesktop {
+      margin-bottom: 32px;
+    }
   }
 
   &__name {
@@ -430,8 +577,11 @@
   &__text {
     font-size: 16px;
     line-height: 27px;
-    color: #3e3e3e;
-    margin-top: 0;
+    margin: 0 0 48px;
+
+    @include onDesktop {
+      margin: 0;
+    }
   }
 }
 
@@ -481,7 +631,6 @@
 .contact-us {
   &__info {
     margin-bottom: 24px;
-    color: #3e3e3e;
   }
 
   &__info-title {
@@ -493,58 +642,18 @@
   }
 }
 
-.button {
-  box-sizing: border-box;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  width: 100%;
-  height: 56px;
-  border: 2px solid #0075ff;
-  border-radius: 8px;
-
-  font-size: 16px;
-  line-height: 14px;
-  font-weight: bold;
-  color: #fff;
-  text-decoration: none;
-
-  background-color: #0075ff;
-  box-shadow: 0 6px 23px rgba(0, 117, 255, 0.46);
-
-  transition: all 0.2s;
-
-  &--secondary {
-    color: #0075ff;
-    background-color: #fff;
-    box-shadow: none;
-  }
-
-  &:hover {
-    color: #fff;
-    border-color: #005ecc;
-    background-color: #005ecc;
-    box-shadow: 0 13px 27px rgba(0, 83, 181, 0.46);
-  }
-
-  &:active {
-    color: #fff;
-    background-color: #005ecc;
-    border-color: #005ecc;
-    box-shadow: 0 8px 14px rgba(0, 83, 181, 0.48);
-  }
-}
-
 .footer {
   display: flex;
   justify-content: center;
   align-items: flex-end;
   box-sizing: border-box;
-  height: 360px;
+  height: 320px;
   padding-bottom: 35px;
   background-image: url(../images/footer.jpg);
   background-size: cover;
   background-position: center;
+
+  @include onDesktop {
+    height: 360px;
+  }
 }
