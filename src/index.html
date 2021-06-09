@@ -4,10 +4,279 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Miami</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles/main.scss">
     <script src="scripts/main.js" defer></script>
   </head>
-  <body>
-    <h1>Miami</h1>
+  <body class="page">
+    <header class="page__header header">
+      <div class="container">
+        <div class="header__content">
+          <div class="header__top">
+            <button class="menu-toggler menu-toggler--opener"></button>
+
+            <a href="/">
+              <img src="./images/logo.png" alt="Miami Condo Kings">
+            </a>
+
+            <a
+              class="header__call"
+              href="tel:+1 234 555-55-55"
+            ></a>
+          </div>
+
+          <h1 class="header__title">
+            Miami
+            <br>
+            Condo Kings
+          </h1>
+        </div>
+      </div>
+    </header>
+
+    <div class="page__menu menu">
+      <div class="container">
+        <div class="menu__content">
+          <div class="menu__top">
+            <button class="menu-toggler menu-toggler--closer"></button>
+            <a href="/">
+              <img src="./images/logo.png" alt="Miami Condo Kings">
+            </a>
+          </div>
+
+          <ul class="menu__list">
+            <li class="menu__item">
+              <a href="#" class="menu__link">Home</a>
+            </li>
+            <li class="menu__item">
+              <a href="#about" class="menu__link">About Us</a>
+            </li>
+            <li class="menu__item">
+              <a href="#gallery" class="menu__link">Gallery</a>
+            </li>
+            <li class="menu__item">
+              <a href="#testimonials" class="menu__link">Testimonials</a>
+            </li>
+            <li class="menu__item">
+              <a href="#contacts" class="menu__link">Contacts</a>
+            </li>
+          </ul>
+
+          <a href="tel:+1 234 555-55-55" class="menu__phone">
+            +1 234 555-55-55
+          </a>
+
+          <a href="tel:+1 234 555-55-55" class="menu__call">
+            call to order
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <section class="page__section about">
+      <div class="container">
+        <div class="about__content">
+          <h2 class="about__title">
+            Miami best Real estate
+
+            <a class="about__link" href="#">
+              here
+            </a>
+          </h2>
+
+          <div class="about__main">
+            <h3 class="about__subtitle">
+              Over 50 years experience in love.
+            </h3>
+
+            <p class="about__paragraph">
+              Mazel and VA Tsukkerman in his "Analysis of musical works." Pointillism, which originated in the music of the early twentieth century, microforms, found a distant historical.
+            </p>
+
+            <p class="about__paragraph">
+              The market leader in real estate since 2003. Awards Real Estate Company, 2010, 2011, 2013. More than 200 satisfied customers premium segment. We focus only on new buildings and high-level doskanalno know this area better than other specialists.Working directly with developers - so have more useful information about the profitable deals.
+            </p>
+
+            <p class="about__paragraph about__paragraph--important about__paragraph--last">
+              We will never be late!
+              <br>
+              Guaranteed secure transaction - 100%
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page__section gallery">
+      <div class="container">
+        <h2 class="section-title">Gallery</h2>
+
+        <div class="place">
+          <div class="place__photos">
+            <img class="place__photo place__photo--1" src="./images/photos/1.jpg" alt="Place 1">
+            <img class="place__photo place__photo--2" src="./images/photos/2.jpg" alt="Place 2">
+          </div>
+
+          <p class="place__address">
+            <a href="#place1">Marina Palms</a>
+            / North Miami Beach, FL 33162
+          </p>
+        </div>
+
+        <div class="place">
+          <div class="place__photos">
+            <img class="place__photo place__photo--3" src="./images/photos/3.jpg" alt="Place 3">
+            <img class="place__photo place__photo--4" src="./images/photos/4.jpg" alt="Place 4">
+          </div>
+
+          <p class="place__address">
+            <a href="#place1">Marina Palms</a>
+            / North Miami Beach, FL 33162
+          </p>
+        </div>
+
+        <div class="place">
+          <div class="place__photos">
+            <img class="place__photo place__photo--5" src="./images/photos/5.jpg" alt="Place 6">
+            <img class="place__photo place__photo--6" src="./images/photos/6.jpg" alt="Place 5">
+          </div>
+
+          <p class="place__address">
+            <a href="#place1">Marina Palms</a>
+            / North Miami Beach, FL 33162
+          </p>
+        </div>
+
+        <div class="grid">
+          <a
+            class="grid__item grid__item--6-7 button button--secondary"
+            href="#view-all"
+          >
+            View all
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="page__section testimonials">
+      <div class="container">
+        <h2 class="section-title">Testimonials</h2>
+
+        <div class="testimonials__content">
+          <div class="testimonials__item-1 testimonial">
+            <img
+              src="./images/people/1.jpg"
+              alt="Name1 Lastname1"
+              class="testimonial__photo"
+            >
+
+            <p class="testimonial__name">Leslie Mckinney</p>
+            <p class="testimonial__title">CEO</p>
+
+            <p class="testimonial__text">
+              Nice work, Certificates National Association of Realtors (USA)
+            </p>
+          </div>
+
+          <div class="testimonials__item-2 testimonial">
+            <img
+              src="./images/people/2.jpg"
+              alt="Name2 Lastname2"
+              class="testimonial__photo"
+            >
+
+            <p class="testimonial__name">Leslie Mckinney</p>
+            <p class="testimonial__title">CEO</p>
+
+            <p class="testimonial__text">
+              Nice work, Certificates National Association of Realtors (USA)
+            </p>
+          </div>
+
+          <div class="testimonials__item-3 testimonial">
+            <img
+              src="./images/people/3.jpg"
+              alt="Name3 Lastname3"
+              class="testimonial__photo"
+            >
+
+            <p class="testimonial__name">Leslie Mckinney</p>
+            <p class="testimonial__title">CEO</p>
+
+            <p class="testimonial__text">
+              Nice work, Certificates National Association of Realtors (USA)
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page__section contact-us">
+      <div class="container">
+        <h2 class="section-title">Contact us</h2>
+
+        <div class="contact-us">
+          <div class="grid">
+            <div class="grid__item grid__item--1-2">
+              <div class="contact-us__info">
+                <h3 class="contact-us__info-title">Phone</h3>
+                +1 234 5555-55-55
+              </div>
+              <div class="contact-us__info">
+                <h3 class="contact-us__info-title">Email</h3>
+                hello@miami.com
+              </div>
+            </div>
+
+            <div class="grid__item grid__item--4-5">
+              <div class="contact-us__info">
+                <h3 class="contact-us__info-title">Address</h3>
+                400 first ave. n.
+                <br>
+                suite 700
+                <br>
+                Minneapolis, MN 55401
+              </div>
+            </div>
+
+            <div class="grid__item grid__item--8-12">
+              <form action="#" method="get" class="contact-form">
+                <input
+                  type="text"
+                  placeholder="Name"
+                  class="form-field contact-form__name"
+                >
+
+                <input
+                  type="text"
+                  placeholder="Email"
+                  class="form-field contact-form__email"
+                >
+
+                <textarea
+                  rows="4"
+                  placeholder="Message"
+                  class="form-field form-field--fixed-text contact-form__message"
+                ></textarea>
+
+                <button
+                  type="submit"
+                  class="button contact-form__submit"
+                >
+                  Consultation
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <a href="/">
+        <img src="./images/logo.png" alt="Miami Condo Kings">
+      </a>
+    </footer>
   </body>
 </html>
