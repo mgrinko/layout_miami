@@ -438,14 +438,14 @@
 
   &__photo-container {
     position: relative;
-    padding-bottom: 100%;
     border-radius: 8px;
-
+    max-height: 256px;
     overflow: hidden;
 
-    @include onDesktop {
-      padding-bottom: 0;
-      height: 256px;
+    &::after {
+      content: "";
+      display: block;
+      padding-bottom: 100%;
     }
   }
 
