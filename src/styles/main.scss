@@ -59,6 +59,11 @@
 
   &__body {
     margin: 0;
+
+    &--with-menu {
+      overflow: hidden;
+      padding-right: 15px;
+    }
   }
 
   &__header {
@@ -251,13 +256,11 @@
 }
 
 .menu {
+  box-sizing: border-box;
+  height: 100vh;
+  padding: 24px 0;
+  overflow-y: auto;
   background-color: #0075ff;
-
-  &__content {
-    box-sizing: border-box;
-    height: 100vh;
-    padding: 24px 0;
-  }
 
   &__top {
     @include navBlock;
@@ -393,6 +396,7 @@
 
   background-color: #0075ff;
   box-shadow: 0 6px 23px rgba(0, 117, 255, 0.46);
+  cursor: pointer;
 
   transition: all 0.2s;
 
@@ -456,6 +460,13 @@
 
     object-fit: cover;
     object-position: center;
+
+    transition: transform 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
   &__address {
@@ -477,6 +488,13 @@
     height: 150px;
     border-radius: 50%;
     margin-bottom: 28px;
+
+    transition: transform 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.1);
+    }
 
     @include onDesktop {
       margin-bottom: 32px;
@@ -579,6 +597,12 @@
   &__info-link {
     color: inherit;
     text-decoration: none;
+
+    transition: color 0.3s;
+
+    &:hover {
+      color: #0075ff;
+    }
   }
 }
 
